@@ -1,0 +1,113 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Registrar {{titulopant}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancelar()" id="closeModal">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_tia_id">Tipo: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_tia_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let item of dataTipoAlmacenamiento" [value]="item.tia_id">{{item.tia_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_ita_id">Interfaz: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_ita_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let item of dataInterfazAlmacenamiento" [value]="item.ita_id">{{item.ita_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_col_numdoi">Forma: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_fra_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let item of dataFormaAlmacenamiento" [value]="item.fra_id">{{item.fra_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_mar_id">Marca: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_mar_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataMarca of dataMarcas" [value]="itemdataMarca.mar_id">{{itemdataMarca.mar_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_mod_id">Modelo: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_mod_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataMarca of dataModelo" [value]="itemdataMarca.mod_id">{{itemdataMarca.mod_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_col_apemat">Número de Serie: </label>
+                                <input name="p_col_apemat" id="p_col_apemat" [(ngModel)]="p_col_apemat" type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_col_apemat">Cap de Almacenamiento: </label>
+                                <input name="p_col_apemat" id="p_col_apemat" [(ngModel)]="p_col_apemat" type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_ume_id">Unid. Medida: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_ume_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemUnidMedid of dataUnidMedid" [value]="itemUnidMedid.ume_id">{{itemUnidMedid.umb_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_esr_id">Estado: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_esr_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataEstado of dataEstados" [value]="itemdataEstado.sbe_id">{{itemdataEstado.sbe_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="position-relative form-group">
+                                <label for="p_rec_observ">Observaciones: </label>
+                                <textarea name="p_rec_observ" id="p_rec_observ" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <p class="text-right">
+                                <button class="mb-2 mr-2 btn-icon btn btn-primary" (click)="GuardarAlmacenamiento()"><i class="pe-7s-plus btn-icon-wrapper"></i>Guardar datos de Almacenamiento</button>
+                                <button class="mb-2 mr-2 btn-icon btn btn-danger" (click)="onCancelar()"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

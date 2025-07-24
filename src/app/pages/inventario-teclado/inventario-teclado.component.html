@@ -1,0 +1,163 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="main-card mb-2 card" style="padding: 12px;">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="uor_id">Descripción del Bien: </label>
+                                    <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="uor_id">Area del Bien: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_ard_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemAreadenominacion of dataAreadenominacion" [value]="itemAreadenominacion.ard_id">{{itemAreadenominacion.ard_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_rec_codpat">Código de SBN: </label>
+                                    <input name="p_rec_codpat" id="p_rec_codpat" type="text" [(ngModel)]="p_rec_codpat" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_rec_numser">Código Interno: </label>
+                                    <input name="p_rec_numser" id="p_rec_numser" type="text" [(ngModel)]="p_rec_numser" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_esr_id">Estado del Recurso: </label>
+                                    <select class="mayus" [(ngModel)]="p_esr_id" class="form-control" >
+                                        <option value="0">Seleccionar</option>
+                                        <option *ngFor="let itemdataEstado of dataEstados" [value]="itemdataEstado.sbe_id">{{itemdataEstado.sbe_descri}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbg_id">Grupo: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_sbg_id" (change)="loadClases();">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataGrupo of dataGrupos" [value]="itemdataGrupo.sbg_id">{{itemdataGrupo.sbg_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbc_id">Clase: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_sbc_id" (change)="loadClases();">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataClase of dataClases" [value]="itemdataClase.sbc_id">{{itemdataClase.sbc_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbf_id">Familia: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_sbf_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataFamilia of dataFamilias" [value]="itemdataFamilia.sbf_id">{{itemdataFamilia.sbf_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_mar_id">Marca: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_mar_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataMarca of dataMarcas" [value]="itemdataMarca.mar_id">{{itemdataMarca.mar_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_mod_id">Modelo: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_mod_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataMarca of dataModelo" [value]="itemdataMarca.mod_id">{{itemdataMarca.mod_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 card">
+                        <div class="card-body">
+                            <div class="table-responsive" id="tablaDataProceso">
+                                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                                    <thead>
+                                        <tr style="text-align: center;">
+                                            <th>CONEXIÓN</th>
+                                            <th>DISTRIBUICIÓN</th>
+                                            <th>TIPO</th>
+                                            <th>DISEÑO</th>
+                                            <th>ESTADO</th>
+                                            <th>ACCION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of dataCamara" style="text-align: center;">
+                                            <td>{{item.cam_id}}</td>
+                                            <td>{{item.cam_dire01}}</td>
+                                            <td>{{item.cam_dire02}}</td>
+                                            <td>{{item.cam_descri}}</td>
+                                            <td>{{item.cam_descri}}</td>
+                                            <td>{{item.cam_descri}}</td>
+                                            <td>{{item.cam_descri}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+                                <div class="pt-3">
+                                    <button class="mb-2 btn-icon btn btn-success" (click)="openModalShow(OpenModalTeclado, 'modal-xl')"><i class="pe-7s-plus btn-icon-wrapper"></i>AÑADIR NUEVO TECLADO</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-right">
+                    <ul class="header-megamenu nav">
+                        <li class="nav-item">
+                            <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #OpenModalTeclado>
+        <app-modal-teclado (seleccionarTeclado)="onTecladoSeleccionado($event)" (cancelClicked)="onCancelar()"></app-modal-teclado>
+    </ng-template>
+</div>

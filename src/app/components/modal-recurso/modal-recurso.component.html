@@ -1,0 +1,75 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Buscar {{titulopant}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancelar()" id="closeModal">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="p_tir_id">Tipo Recurso: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_tir_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataTipoRecurso of dataTipoRecurso" [value]="itemdataTipoRecurso.tir_id">{{itemdataTipoRecurso.tir_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="position-relative form-group">
+                                <label for="p_rec_codpat">Código: </label>
+                                <input name="p_rec_codpat" id="p_rec_codpat" [(ngModel)]="p_rec_codpat" type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/" maxlength="12" (keypress)="restrictNumeric($event)">
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group" style="padding-top: 7px;">
+                                <button class="mt-4 btn-icon btn btn-alternate btn-lg btn-block" (click)="loadData()">
+                                    <i class="pe-7s-search"></i> BUSCAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" id="tablaProceso">
+                        <h5 class="card-title">Resultados de Busqueda &nbsp; <span id="busquedaTables" style="display: none;"><i class="fa fa-spinner fa-pulse fa-fw"></i></span></h5>
+                        <div class="table-responsive" id="tablaDataProceso">
+                            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                                <thead>
+                                    <tr style="text-align: center;">
+                                        <th>TIPO RECURSO</th>
+                                        <th>NOMBRE</th>
+                                        <th>CÓDIGO</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of dataRecurso" style="text-align: center;">
+                                        <td>{{item.tir_descri}}</td>
+                                        <td>{{item.rec_nombre}}</td>
+                                        <td>{{item.rec_codigo}}</td>
+                                        <td>
+                                            <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example" (click)="SeleccionarRecurso(item.rec_id,item.rec_codigo)">
+                                                <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <p class="text-right">
+                                <button class="mb-2 mr-2 btn-icon btn btn-danger" id="Cancelar" (click)="onCancelar()"><i class="pe-7s-trash btn-icon-wrapper"></i>CANCELAR</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

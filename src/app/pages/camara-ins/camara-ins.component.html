@@ -1,0 +1,90 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label>Dirección A</label>
+                                        <input class="form-control" placeholder="Ingrese Dirección A" [(ngModel)]="p_cam_dire01" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label>Dirección B</label>
+                                        <input class="form-control" placeholder="Ingrese Dirección B" [(ngModel)]="p_cam_dire02" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="fb_fecini">Dirección </label>
+                                        <input class="form-control" ngx-google-places-autocomplete [options]='options' placeholder="Ingrese Dirección" [(ngModel)]="p_direcc" #placesRef="ngx-places" readonly />
+                                    </div>
+                                </div>
+                                <!-- <div id="map"></div> -->
+                                <div class="col-md-12">
+                                    <agm-map [latitude]="latitud" [zoom]="17" [longitude]="longitud" (mapClick)="mapClicked($event)" (mapReady)="onMapReady($event)">
+                                        <agm-marker [latitude]="latitud" [longitude]="longitud"></agm-marker>
+                                    </agm-map>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <p class="text-left">
+                                        <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Grabar" (click)="procesaRegistro()"><i class="pe-7s-plus btn-icon-wrapper"></i>Grabar</button>
+                                        <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Cancelar" [routerLink]="['/camara']"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-wrapper-footer">
+            <div class="app-footer">
+                <div class="app-footer__inner">
+                    <div class="app-footer-right">
+                        <ul class="header-megamenu nav">
+                            <li class="nav-item">
+                                <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+        <ng-template #templateNew>
+            <div class="modal-header">
+                <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Registrar {{titulopant}}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" onclick="Limpiartalcancelar()" id="closeModal">
+              <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </ng-template> -->
+
+    </div>

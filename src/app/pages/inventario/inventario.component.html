@@ -1,0 +1,167 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="main-card mb-2 card" style="padding: 12px;">
+                        <div class="form-row">
+                            <div class="col-md-11">
+                                <div class="position-relative form-group">
+                                    <label for="colab_nombre">Colaborador: </label>
+                                    <input name="colab_nombre" id="colab_nombre" [(ngModel)]="colab_nombre" type="text" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-1 align-items-center justify-content-center">
+                                <div class="form-group" style="padding-top: 4px;">
+                                    <button class="mt-4 btn-icon btn btn-primary btn-lg btn-block" (click)="openModalShow(OpenModalColaboradorBuscar, 'modal-xl')" title="OBTENER COLABORADOR">
+                                        <i class="pe-7s-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="uor_id">Area: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_ard_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemAreadenominacion of dataAreadenominacion" [value]="itemAreadenominacion.ard_id">{{itemAreadenominacion.ard_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbg_id">Grupo: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_sbg_id" (change)="loadClases();">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataGrupo of dataGrupos" [value]="itemdataGrupo.sbg_id">{{itemdataGrupo.sbg_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbc_id">Clase: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_sbc_id" (change)="loadClases();">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataClase of dataClases" [value]="itemdataClase.sbc_id">{{itemdataClase.sbc_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbf_id">Familia: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_sbf_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataFamilia of dataFamilias" [value]="itemdataFamilia.sbf_id">{{itemdataFamilia.sbf_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_esr_id">Estado: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_esr_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataEstado of dataEstados" [value]="itemdataEstado.sbe_id">{{itemdataEstado.sbe_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_mar_id">Marca: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_mar_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataMarca of dataMarcas" [value]="itemdataMarca.mar_id">{{itemdataMarca.mar_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="text-align: right;">
+                                <div class="text-center d-inline-flex btns-filters">
+                                    <button class="mb-2 mr-2 btn-icon btn btn-primary btn-md" id="buscar" (click)="loadData()"><i class="pe-7s-search btn-icon-wrapper"></i>Buscar</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-warning btn-md" id="nuevoMantenimiento" (click)="incidenciaIns()"><i class="pe-7s-plus btn-icon-wrapper"></i>Nuevo</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-success btn-md" id="descargaExcel" (click)="descargaExcel()"><i class="pe-7s-attention btn-icon-wrapper"></i>Exportar Excel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-card mb-3 card">
+                        <div class="card-body" id="tablaProceso">
+                            <h5 class="card-title">Resultados de Busqueda &nbsp; <span id="busquedaTables" style="display: none;"><i class="fa fa-spinner fa-pulse fa-fw"></i></span></h5>
+                            <div class="table-responsive" id="tablaDataProceso">
+                                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">NOMBRE DE RECURSO</th>
+                                            <th style="text-align: center;">SERIE</th>
+                                            <th style="text-align: center;">ESTADO</th>
+                                            <th style="text-align: center;">COLABORADOR</th>
+                                            <th style="text-align: center;">CODIGO SBN</th>
+                                            <th style="text-align: center;">ACCION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of dataInventario" style="text-align: center;">
+                                            <td>{{item.rec_nombre}}</td>
+                                            <td>{{item.rec_numser}}</td>
+                                            <td>{{item.esr_descri}}</td>
+                                            <td>{{item.col_nomcom}}</td>
+                                            <td>{{item.rep_codpat}}</td>
+                                            <td>
+                                                <button type="button" class="btn-shadow mr-1 btn btn-success btn-sm show-toastr-example" title="Editar">
+                                                    <i class="fa text-white fa-pen pr-1 pl-1"></i>
+                                                </button>
+                                                <button type="button" class="btn-shadow m-1 btn btn-primary btn-sm show-toastr-example" title="Ficha" (click)="InventarioFicha(item.rec_id)">
+                                                    <i class="fa text-white fa-file pr-1 pl-1"></i>
+                                                </button>
+                                                <button type="button" class="btn-shadow m-1 btn btn-danger btn-sm show-toastr-example" title="Anular">
+                                                    <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                                </button>
+                                                <button type="button" class="btn-shadow m-1 btn btn-secondary btn-sm show-toastr-example" title="Datos Monitor" (click)="InventarioMonitor(item.rec_id)">
+                                                    <i class="text-white pe-7s-monitor pr-1 pl-1"></i>
+                                                </button>
+                                                <button type="button" class="btn-shadow m-1 btn btn-warning btn-sm show-toastr-example" title="Datos Teclado" (click)="InventarioTeclado(item.rec_id)">
+                                                    <i class="fa text-white fa-keyboard pr-1 pl-1"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-right">
+                    <ul class="header-megamenu nav">
+                        <li class="nav-item">
+                            <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #OpenModalColaboradorBuscar>
+        <app-modal-colaborador (seleccionarColaborador)="onColaboradorSeleccionado($event)" (cancelClicked)="onCancelar()"></app-modal-colaborador>
+    </ng-template>
+</div>

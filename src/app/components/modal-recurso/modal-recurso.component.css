@@ -1,0 +1,16 @@
+.table-responsive {
+    overflow-x: hidden;
+}
+
+table.dataTable {
+    font-size: 12px;
+}
+
+table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
+    background-color: #ffffff !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+.btn {
+    font-size: 0.6rem;
+}

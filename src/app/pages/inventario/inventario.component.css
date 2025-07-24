@@ -1,0 +1,21 @@
+.form-group{
+    margin-bottom: 0.3rem;
+}
+.btns-filters{
+    padding-top: 1.85rem;
+}
+table.dataTable {
+    font-size: 12px;
+}
+table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
+    background-color: #ffffff !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 0px 0px;
+}
+
+.btn-sm {
+    padding: 0.1rem .2rem;
+}

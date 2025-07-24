@@ -1,0 +1,11 @@
+table.dataTable tbody tr {
+    line-height: 1;
+}
+
+table.dataTable tbody tr {
+font-size: 12.5px;
+}
+
+table.dataTable thead th {
+font-size: 13px;
+}

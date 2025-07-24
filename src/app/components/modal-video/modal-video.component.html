@@ -1,0 +1,101 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Registrar {{titulopant}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancelar()" id="closeModal">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_cnt_id">Conector: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_cnt_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataConector of dataConector" [value]="itemdataConector.cnt_id">{{itemdataConector.cnt_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_cvt_id">Tipo Conector: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_cvt_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataTipoConector of dataTipoConector" [value]="itemdataTipoConector.cvt_id">{{itemdataTipoConector.cvt_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_col_numdoi">Número Serie: </label>
+                                <input name="p_col_numdoi" id="p_col_numdoi" [(ngModel)]="p_col_numdoi" type="text" class="form-control" (keypress)="restrictNumeric($event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-5">
+                            <div class="position-relative form-group">
+                                <label for="p_mar_id">Marca: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_mar_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataMarca of dataMarcas" [value]="itemdataMarca.mar_id">{{itemdataMarca.mar_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_mod_id">Modelo: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_mod_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataMarca of dataModelo" [value]="itemdataMarca.mod_id">{{itemdataMarca.mod_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="margin: auto;text-align: center;">
+                            <div class="position-relative form-check">
+                                <label class="form-check-label"><input type="checkbox" class="form-check-input">¿Tarjeta de Video Principal?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_rec_codpat">Memoria RAM: </label>
+                                <input name="p_rec_codpat" id="p_rec_codpat" type="text" [(ngModel)]="p_rec_codpat" class="form-control" (keypress)="restrictNumeric($event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_ume_id">Unidad de Medida RAM: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_ume_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataUnidadMedida of dataUnidadMedida" [value]="itemdataUnidadMedida.ume_id">{{itemdataUnidadMedida.umb_abrevi}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="p_esr_id">Estado: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_esr_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataEstado of dataEstados" [value]="itemdataEstado.sbe_id">{{itemdataEstado.sbe_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <p class="text-right">
+                                <button class="mb-2 mr-2 btn-icon btn btn-primary" (click)="GuardarVideo()"><i class="pe-7s-trash btn-icon-wrapper"></i>Guardar Datos Tarjeta Video</button>
+                                <button class="mb-2 mr-2 btn-icon btn btn-danger" (click)="onCancelar()"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

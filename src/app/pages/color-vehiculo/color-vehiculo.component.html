@@ -1,0 +1,115 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="main-card mb-2 card" style="padding: 12px;">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <p class="text-left">
+                                    <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="nuevoMantenimiento" (click)="openModalShow(templateNew, 'modal-lg')"><i class="pe-7s-plus btn-icon-wrapper"></i>Nuevo</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="anularMantenimiento" (click)="anulaMantenimiento()"><i class="pe-7s-trash btn-icon-wrapper"></i>Anular</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="ExportarExcel" (click)="descargaExcel()"><i class="pe-7s-attention btn-icon-wrapper"></i>Exportar Excel</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-card mb-3 card">
+                        <div class="card-body" id="tablaProceso">
+                            <h5 class="card-title">Resultados de Busqueda &nbsp; <span id="busquedaTables" style="display: none;"><i class="fa fa-spinner fa-pulse fa-fw"></i></span></h5>
+                            <div class="table-responsive" id="tablaDataProceso">
+                                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                                    class="row-border hover">
+                                    <thead>
+                                        <tr style="text-align: center;">
+                                            <th>ID</th>
+                                            <th>DESCRIPCIÓN</th>
+                                            <th>ABREVIATURA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of dataProceso" style="text-align: center;">
+                                            <td>{{item.cov_id}}</td>
+                                            <td>{{item.cov_descri}}</td>
+                                            <td>{{item.cov_abrevi}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-right">
+                    <ul class="header-megamenu nav">
+                        <li class="nav-item">
+                            <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #templateNew>
+      <div class="modal-header">
+          <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Registrar {{titulopant}}</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" onclick="Limpiartalcancelar()" id="closeModal">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="descrip">Descripción: </label>
+                                    <input name="descrip" id="descrip" [(ngModel)]="descrip" type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="abrev">Abreviatura: </label>
+                                    <input name="abrev" id="abrev" [(ngModel)]="abrev" type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="col-md-12">
+                              <p class="text-left">
+                                  <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Grabar" (click)="procesaRegistro()"><i class="pe-7s-plus btn-icon-wrapper"></i>Grabar</button>
+                                  <button id="LimpiarForm" style="display:none" (click)="LimpiarFormulario()">a</button>
+                                  <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Cancelar" (click)="modalRef.hide()" onclick="Limpiartalcancelar()"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+                              </p>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </ng-template>
+
+</div>

@@ -1,0 +1,127 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.ng-select.ng-select-single .ng-select-container {
+    height: 38px;
+}
+
+/* You can add global styles to this file, and also import other style files */
+app-bitacora-ins,
+app-bitacora {
+    width: 100%;
+}
+
+app-patrimonio,
+app-inventario,
+app-inventario-ins,
+app-inventario-ficha,
+app-inventario-monitor,
+app-inventario-teclado {
+    width: 100%;
+}
+
+agm-map {
+    height: 800px;
+}
+
+app-documentos,
+app-documento-ins,
+app-welcome,
+app-proceso,
+app-listado-contrib,
+app-detalle-deuda,
+app-nuevo-proceso,
+app-lote,
+app-nuevo-lote,
+app-listado-contrib-lote,
+app-detalle-deuda-lote,
+app-maps,
+app-generar-valores,
+app-mantenimiento,
+app-nuevo-mantenimiento,
+app-ficha,
+app-color-sector,
+app-usuario,
+app-marca-modelo,
+app-parte,
+app-sector,
+app-turno,
+app-vehiculo,
+app-roles,
+app-perfil app-grupo-vehiculo,
+app-color-vehiculo,
+app-marca-vehiculo,
+app-modelo-vehiculo,
+app-motivo-parte,
+app-motivo-parte-cab,
+app-motivo-parte-det,
+app-perfil,
+app-perfil-rol,
+app-grupo-vehiculo,
+app-perfil-permiso,
+app-parte-ins,
+app-incidencia-ins,
+app-reporte-incidencia,
+app-incidencia,
+app-reporte-parte,
+app-dashboard,
+app-tipo-personal,
+app-personal,
+app-radio,
+app-camara,
+app-ver-camara,
+app-camara-ins,
+app-zona,
+app-incidencia-upd {
+    width: 100%;
+}
+
+table.dataTable tbody>tr.selected,
+table.dataTable tbody>tr>.selected {
+    background-color: #2C3180 !important;
+    color: rgb(241, 241, 241) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate a.paginate_button.current,
+.dataTables_wrapper .dataTables_paginate a.paginate_button.current:hover {
+    background: unset !important;
+    background-color: #2C3180 !important;
+    border-color: #2C3180 !important;
+    color: #FFF !important;
+}
+
+.btn-info-mdsb {
+    background-color: #FFF !important;
+    border-color: #2C3180 !important;
+    color: #2C3180 !important;
+}
+
+.btn-info-mdsb:not([disabled]):hover {
+    background-color: #2C3180 !important;
+    border-color: #2C3180 !important;
+    color: #FFF !important;
+}
+
+#tablaDataProceso .dt-buttons .dt-button.buttons-excel.buttons-html5,
+#tablaDetalleProceso .dt-buttons .dt-button.buttons-excel.buttons-html5 {
+    visibility: hidden;
+}
+
+.dt-buttons {
+    visibility: hidden;
+}
+
+.padarr {
+    padding-top: 1rem;
+}
+
+div#liveScore {
+    overflow: auto;
+}
+
+.ng-input>input[type="text"] {
+    text-transform: uppercase;
+}
+
+.app-header__content {
+    background: linear-gradient(to bottom, #ffb88c, #de6262);
+}

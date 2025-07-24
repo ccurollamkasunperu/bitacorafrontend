@@ -1,0 +1,307 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="main-card mb-2 card" style="padding: 12px;">
+                        <div class="form-row">
+                            <!-- <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Usuario: </label>
+                                    <input name="pt1_nombres" id="pt1_nombres" type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div> -->
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Parte Tipo: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_pti_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataParteTipo" [value]="item.pti_id">{{item.pti_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Motivo Parte Cab: </label>
+                                    <select class="form-control" [(ngModel)]="p_mpc_id" (change)="loadDataParteMotivo()">
+                                        <option value="0">Seleccionar</option>
+                                        <option *ngFor="let item of dataParteCab" [value]="item.mpc_id">{{item.mpc_descri}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Motivo Parte Det: </label>
+                                    <select class="form-control" [(ngModel)]="p_mop_id">
+                                        <option value="0">Seleccionar</option>
+                                        <option *ngFor="let item of dataParteMotivo" [value]="item.mop_id">{{item.mpd_descri}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Zona: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_zon_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataZona" [value]="item.zon_id">{{item.zon_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Vehiculo: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_veh_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataVehiculo" [value]="item.veh_id">{{item.veh_nombre}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Fecha Inicio: </label>
+                                    <input id="pt1_nombres" type="date" class="form-control" [ngModel]="p_par_fecini | date:'yyyy-MM-dd'" (ngModelChange)="p_par_fecini = $event">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Fecha Fin: </label>
+                                    <input id="pt1_nombres" [ngModel]="p_par_fecfin | date:'yyyy-MM-dd'" type="date" class="form-control" (ngModelChange)="p_par_fecfin = $event">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <p class="text-left">
+                                    <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="buscar" (click)="loadDataProceso()"><i class="pe-7s-search btn-icon-wrapper"></i>Buscar</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="nuevoMantenimiento" (click)="parteIns()"><i class="pe-7s-plus btn-icon-wrapper"></i>Nuevo</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="anularMantenimiento" (click)="anulaMantenimiento()"><i class="pe-7s-trash btn-icon-wrapper"></i>Anular</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="ExportarExcel" (click)="descargaExcel()"><i class="pe-7s-attention btn-icon-wrapper"></i>Exportar Excel</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" disabled id="imprimirParte" (click)="openModalShow(imprimirParte, 'modal-lg');btnImprimirParte();"><i class="pe-7s-print btn-icon-wrapper"></i>Imprimir</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" disabled id="verImagenes" (click)="openModalShow(verImagenes, 'modal-lg') ;btnVerImagenes();"><i class="pe-7s-search btn-icon-wrapper"></i>Ver Imagenes</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-card mb-3 card">
+                        <div class="card-body" id="tablaProceso">
+                            <h5 class="card-title">Resultados de Busqueda &nbsp; <span id="busquedaTables" style="display: none;"><i class="fa fa-spinner fa-pulse fa-fw"></i></span></h5>
+                            <div class="table-responsive" id="tablaDataProceso">
+                                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                                    <thead>
+                                        <tr style="text-align: center;">
+                                            <th>ID</th>
+                                            <th>TIPO</th>
+                                            <th>TURNO</th>
+                                            <!-- <th>NOMBRE VEHICULO</th> -->
+                                            <th>ZONA</th>
+                                            <th>MOTIVO CAB</th>
+                                            <th>MOTIVO DET</th>
+                                            <!-- <th>DESCRIPCIÓN</th> -->
+                                            <!-- <th>ACCIONES</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of dataProceso" style="text-align: center;">
+                                            <td>{{item.par_id}}</td>
+                                            <td>{{item.pti_descri}}</td>
+                                            <td>{{item.tur_descri}}</td>
+                                            <!-- <td>{{item.veh_nombre}}</td> -->
+                                            <td>{{item.zon_descri}}</td>
+                                            <td>{{item.mpc_descri}}</td>
+                                            <td>{{item.mpd_descri}}</td>
+                                            <!-- <td>{{item.mpa_descri}}</td> -->
+                                            <!-- <td>{{item.prl_id}}</td> -->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-right">
+                    <ul class="header-megamenu nav">
+                        <li class="nav-item">
+                            <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #verImagenes>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i>Imagenes Parte</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" onclick="Limpiartalcancelar()" id="closeModal">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div id="print-section">
+                <div class="main-card mb-3 card element-block-example">
+                    <div class="card-header">VISUALIZACIÓN DE IMAGENES</div>
+                    <div class="card-body" style="border-style: groove;">
+                        <table class="row-border hover">
+                            <thead>
+                                <tr style="text-align: center;">
+                                    <th>IMAGEN ADJUNTA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="text-align: center;">
+                                    <td *ngFor="let item of dataImagen">
+                                        <div class="widget-content p-0">
+                                            <div class="widget-content-wrapper" style="justify-content: center;">
+                                                <div class="widget-content-center mr-3">
+                                                    <img width="200" height="200" [src]="'data:image/png;base64,' + item.pim_images" alt="">
+                                                </div>
+                                                <div class="widget-content-center">
+                                                    <div class="widget-heading"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Cancelar" (click)="modalRef.hide()"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+
+        </div>
+    </ng-template>
+
+    <ng-template #imprimirParte>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i>Imprimir Parte</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" onclick="Limpiartalcancelar()" id="closeModal">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div id="print-section">
+                <div class="main-card mb-3 card element-block-example">
+                    <div class="card-header">PARTE - Llamkasun Perú</div>
+                    <div class="card-body" style="border-style: groove;">
+
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label>Número: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_numero_inc" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label>Fecha: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_fecha_inc" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label>Parte - Tipo: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_tipo_inc" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Parte - Motivo: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_motivo_inc" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Tipo - Vehiculo: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_tipveh_inc" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Vehiculo: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_vehiculo_inc" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Sector: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_sector_inc" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Supervisor: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_supervisor_inc" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">Sereno: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_sereno_inc" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="fb_fecini">Dirección </label>
+                                    <input type="text" class="form-control" [(ngModel)]="print_direccion_inc" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="pt1_nombres">DOY CUENTA A UD. SIENDO LA HORA INDICADA, SE PROCEDIÓ A: </label>
+                                    <textarea type="text" class="form-control" [(ngModel)]="print_motivo_inc" disabled></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" printSectionId="print-section" useExistingCss="true" ngxPrint><i class="pe-7s-print btn-icon-wrapper"></i>Imprimir</button>
+            <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Cancelar" (click)="modalRef.hide()"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+
+        </div>
+    </ng-template>
+
+</div>

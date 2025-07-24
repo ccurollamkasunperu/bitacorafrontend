@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Llamkasun Perú</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5vGKR2yl1fnF1aT6tn-gPxPANhSBBg8Q&libraries=places&language=en"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("input#apepat").bind('keypress', function(event) {
+                var regex = new RegExp("^[a-zA-Z ]+$");
+                var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                if (!regex.test(key)) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <app-root></app-root>
+</body>
+<script>
+    function Limpiartalcancelar() {
+      document.getElementById("LimpiarForm").click();
+    }
+    function updateDiv(){
+        setTimeout(() => {
+            /* $( "#liveScore" ).load(window.location.href + " #liveScore" ); */
+        }, 1000);
+    }
+</script>
+</html>

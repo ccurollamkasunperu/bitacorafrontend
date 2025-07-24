@@ -1,0 +1,170 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-1 card">
+                        <div class="card-body">
+                            <div class="widget-heading pb-3 font-weight-bold">DATOS DOCUMENTO ORIGEN</div>
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <div class="position-relative form-group">
+                                        <label for="tdo_id">Tipo Documento: </label>
+                                        <ng-select class="mayus" [disabled]="disabled_inputs" [(ngModel)]="tdo_id">
+                                            <ng-option value="0">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataTipoDocumento" [value]="item.tidoid">{{item.destdo}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="position-relative form-group">
+                                        <label for="cdu_nudoor">Número de Documento: </label>
+                                        <input name="cdu_nudoor" id="cdu_nudoor" [disabled]="disabled_inputs" [(ngModel)]="cdu_nudoor" type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="position-relative form-group">
+                                        <label for="cdu_fedoor">Fecha: </label>
+                                        <input name="cdu_fedoor" id="cdu_fedoor" type="date" class="form-control" [disabled]="disabled_inputs" [(ngModel)]="cdu_fedoor">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="uor_id">Unidad Organizativa: </label>
+                                        <ng-select class="mayus" [disabled]="disabled_inputs" [(ngModel)]="uor_id">
+                                            <ng-option value="0">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let itemUnidadOrganizativa of dataUnidadOrganizativa" [value]="itemUnidadOrganizativa.iduorg">{{itemUnidadOrganizativa.nomuor}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="main-card card">
+                        <div class="card-body">
+                            <div class="widget-heading pb-3 font-weight-bold">DATOS DOCUMENTO RESPUESTA</div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="tdr_id">Tipo Documento: </label>
+                                        <ng-select class="mayus" [disabled]="disabled_inputs" [(ngModel)]="tdr_id">
+                                            <ng-option value="0">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataTipoDocumento" [value]="item.tidoid">{{item.destdo}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="cdu_nudore">Número de Documento: </label>
+                                        <input name="cdu_nudore" id="cdu_nudore" [disabled]="disabled_inputs" [(ngModel)]="cdu_nudore" type="number" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="cdu_fedore">Fecha Documento: </label>
+                                        <input name="cdu_fedore" id="cdu_fedore" type="date" class="form-control" [disabled]="disabled_inputs" [(ngModel)]="cdu_fedore">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="cdu_nuexre">Número de Expediente: </label>
+                                        <input name="cdu_nuexre" id="cdu_nuexre" [disabled]="disabled_inputs" [(ngModel)]="cdu_nuexre" type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="ten_id">Tipo de Envio: </label>
+                                        <ng-select class="mayus" [disabled]="disabled_inputs" [(ngModel)]="ten_id">
+                                            <ng-option value="0">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let itemdataTipoenvio of dataTipoenvio" [value]="itemdataTipoenvio.tidoid">{{itemdataTipoenvio.destdo}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="cdu_fencor">Fecha de envio: </label>
+                                        <input name="cdu_fencor" id="cdu_fencor" type="date" class="form-control" [disabled]="disabled_inputs" [(ngModel)]="cdu_fencor">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="main-card card">
+                        <div class="card-body" style="padding: 3.15rem 1.25rem;">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="inputMensaje"><strong> Adjuntar Archivos </strong></label>
+                                        <ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png,image/gif">
+                                            <ngx-dropzone-label>Arrastra tus archivos</ngx-dropzone-label>
+                                            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true">
+                                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                            </ngx-dropzone-image-preview>
+                                        </ngx-dropzone>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="main-card card">
+                        <div class="card-body">
+                            <p class="text-right" style="margin-bottom: 0px;">
+                                <button class="mb-2 mr-2 btn-icon btn btn-success" id="ExportarExcel" (click)="procesaRegistro()"><i class="pe-7s-attention btn-icon-wrapper"></i>GUARDAR REGISTRO</button>
+                                <button class="mb-2 mr-2 btn-icon btn btn-danger" id="Regresar" (click)="Regresar()"><i class="pe-7s-plus btn-icon-wrapper"></i>CANCELAR</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-wrapper-footer">
+            <div class="app-footer">
+                <div class="app-footer__inner">
+                    <div class="app-footer-right">
+                        <ul class="header-megamenu nav">
+                            <li class="nav-item">
+                                <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+        <ng-template #templateNew>
+            <div class="modal-header">
+                <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Registrar {{titulopant}}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" onclick="Limpiartalcancelar()" id="closeModal">
+              <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </ng-template> -->
+
+    </div>

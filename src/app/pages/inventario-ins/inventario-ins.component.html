@@ -1,0 +1,185 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="main-card mb-2 card" style="padding: 12px;">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_tir_id">Tipo Recurso: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_tir_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataTipoRecurso of dataTipoRecurso" [value]="itemdataTipoRecurso.tir_id">{{itemdataTipoRecurso.tir_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="position-relative form-group">
+                                    <label for="descripcodigo">Recurso Padre: </label>
+                                    <input name="descripcodigo" id="descripcodigo" [(ngModel)]="descripcodigo" type="text" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-1 align-items-center justify-content-center">
+                                <div class="form-group" style="padding-top: 4px;">
+                                    <button class="mt-4 btn-icon btn btn-primary btn-lg btn-block" (click)="openModalShow(OpenModalRecursoBuscar, 'modal-xl')" title="OBTENER RECURSO">
+                                        <i class="pe-7s-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_rpr_id">Propiedad: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_rpr_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataPropiedad of dataPropiedad" [value]="itemdataPropiedad.rpr_id">{{itemdataPropiedad.rpr_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="display: none;">
+                                <div class="position-relative form-group">
+                                    <label for="uor_id">Código Recurso: </label>
+                                    <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="p_ard_id">Area: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_ard_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemAreadenominacion of dataAreadenominacion" [value]="itemAreadenominacion.ard_id">{{itemAreadenominacion.ard_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_mar_id">Marca: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_mar_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataMarca of dataMarcas" [value]="itemdataMarca.mar_id">{{itemdataMarca.mar_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_mod_id">Modelo: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_mod_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataMarca of dataModelo" [value]="itemdataMarca.mod_id">{{itemdataMarca.mod_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="p_rec_nombre">Nombres del Recurso: </label>
+                                    <input name="p_rec_nombre" id="p_rec_nombre" type="text" [(ngModel)]="p_rec_nombre" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_rec_numser">Numero de Serie: </label>
+                                    <input name="p_rec_numser" id="p_rec_numser" type="text" [(ngModel)]="p_rec_numser" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="display: none;">
+                                <div class="position-relative form-group">
+                                    <label for="p_rec_codpat">Código de SBN: </label>
+                                    <input name="p_rec_codpat" id="p_rec_codpat" type="text" [(ngModel)]="p_rec_codpat" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_rec_colors">Color: </label>
+                                    <input name="p_rec_colors" id="p_rec_colors" type="text" [(ngModel)]="p_rec_colors" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_esr_id">Estado del Recurso: </label>
+                                    <select class="mayus" [(ngModel)]="p_esr_id" class="form-control" >
+                                        <option value="0">Seleccionar</option>
+                                        <option *ngFor="let itemdataEstado of dataEstados" [value]="itemdataEstado.sbe_id">{{itemdataEstado.sbe_descri}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-11">
+                                <div class="position-relative form-group">
+                                    <label for="colab_nombre">Colaborador: </label>
+                                    <input name="colab_nombre" id="colab_nombre" [(ngModel)]="colab_nombre" type="text" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-1 align-items-center justify-content-center">
+                                <div class="form-group" style="padding-top: 4px;">
+                                    <button class="mt-4 btn-icon btn btn-alternate btn-lg btn-block" (click)="openModalShow(OpenModalColaboradorBuscar, 'modal-xl')" title="OBTENER COLABORADOR">
+                                        <i class="pe-7s-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="p_rec_observ">Observaciones: </label>
+                                    <textarea name="p_rec_observ" id="p_rec_observ" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row pt-2">
+                            <div class="col-md-12">
+                                <p class="text-right">
+                                    <button class="mb-2 mr-2 btn-icon btn btn-success" id="Grabar" (click)="procesaRegistro()"><i class="pe-7s-plus btn-icon-wrapper"></i>Grabar</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-danger" id="Cancelar" [routerLink]="['/inventario']"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-right">
+                    <ul class="header-megamenu nav">
+                        <li class="nav-item">
+                            <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #OpenModalColaboradorBuscar>
+        <app-modal-colaborador (seleccionarColaborador)="onColaboradorSeleccionado($event)" (cancelClicked)="onCancelar()"></app-modal-colaborador>
+    </ng-template>
+    <ng-template #OpenModalRecursoBuscar>
+        <app-modal-recurso (seleccionarRecurso)="onRecursoSeleccionado($event)" (cancelClicked)="onCancelar()"></app-modal-recurso>
+    </ng-template>
+</div>

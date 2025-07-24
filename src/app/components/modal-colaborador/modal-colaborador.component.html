@@ -1,0 +1,90 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Registrar {{titulopant}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancelar()" id="closeModal">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="p_tdi_id">Tipo Documento: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_tdi_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let item of dataTipoDocumento" [value]="item.tdi_id">{{item.tdi_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="p_col_numdoi">Número de Documento: </label>
+                                <input name="p_col_numdoi" id="p_col_numdoi" [(ngModel)]="p_col_numdoi" type="text" class="form-control" (keypress)="restrictNumeric($event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="p_col_apepat">Apellido Paterno: </label>
+                                <input name="p_col_apepat" id="p_col_apepat" [(ngModel)]="p_col_apepat" type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="position-relative form-group">
+                                <label for="p_col_apemat">Apellido Materno: </label>
+                                <input name="p_col_apemat" id="p_col_apemat" [(ngModel)]="p_col_apemat" type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                            </div>
+                        </div>
+                        <div class="col-md-1 d-flex align-items-center justify-content-center">
+                            <div class="form-group">
+                                <button class="mt-4 btn-icon btn btn-alternate btn-lg btn-block" (click)="loadData()">
+                                    <i class="pe-7s-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body" id="tablaProceso">
+                        <h5 class="card-title">Resultados de Busqueda &nbsp; <span id="busquedaTables" style="display: none;"><i class="fa fa-spinner fa-pulse fa-fw"></i></span></h5>
+                        <div class="table-responsive" id="tablaDataProceso">
+                            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                                <thead>
+                                    <tr style="text-align: center;">
+                                        <th>TIPO DOCUMENTO</th>
+                                        <th>NUMERO</th>
+                                        <th>NOMBRE Y APELLIDO</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of dataColaboradores" style="text-align: center;">
+                                        <td>{{item.tdi_abrevi}}</td>
+                                        <td>{{item.col_numdoi}}</td>
+                                        <td>{{item.col_nomcom}}</td>
+                                        <td>
+                                            <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example" (click)="SeleccionarColaborador(item.col_id,item.col_nomcom)">
+                                                <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <p class="text-right">
+                                <button class="mb-2 mr-2 btn-icon btn btn-danger" id="Cancelar" (click)="onCancelar()"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

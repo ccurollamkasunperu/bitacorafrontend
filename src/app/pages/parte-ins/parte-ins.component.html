@@ -1,0 +1,182 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Parte - Tipo: </label>
+                                        <ng-select [(ngModel)]="p_pti_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataParteTipo" [value]="item.pti_id">{{item.pti_descri}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Parte - Cabecera: </label>
+                                        <ng-select [(ngModel)]="p_mpc_id" (change)="loadDataParteMotivo()">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataParteCab" [value]="item.mpc_id">{{item.mpc_descri}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Parte - Motivo: </label>
+                                        <ng-select [(ngModel)]="p_mop_id" [disabled]="secselpartmotiv">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataParteMotivo" [value]="item.mop_id">{{item.mpd_descri}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <!--<div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Tipo - Vehiculo: </label>
+                                        <select class="form-control">
+                                            <option value="">Seleccionar</option>
+                                            <option *ngFor="let item of dataTipoVehiculo" [value]="item.tve_id">{{item.tve_descri}}</option>
+                                        </select>
+                                    </div>
+                                </div>-->
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Vehiculo: </label>
+                                        <ng-select [(ngModel)]="p_veh_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataVehiculo" [value]="item.veh_id">{{item.veh_nombre}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Zona: </label>
+                                        <ng-select [(ngModel)]="p_zon_id" (change)="loadDataSector()">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataZona" [value]="item.zon_id">{{item.zon_descri}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Sector: </label>
+                                        <ng-select [(ngModel)]="p_sec_id" [disabled]="secselbool">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataSector" [value]="item.sec_id">{{item.sec_descri}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Supervisor: </label>
+                                        <ng-select [(ngModel)]="p_sup_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataSupervisor" [value]="item.prl_id">{{item.prl_nomcom}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Sereno: </label>
+                                        <ng-select [(ngModel)]="p_prl_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataSereno" [value]="item.prl_id">{{item.prl_nomcom}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="fb_fecini">Dirección </label>
+                                        <input class="form-control" ngx-google-places-autocomplete [options]='options' placeholder="Ingrese Dirección" #placesRef="ngx-places" [(ngModel)]="p_par_direcc" (onAddressChange)="handleAddressChange($event)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <agm-map [latitude]="latitud" [zoom]="17" [longitude]="longitud" (mapClick)="mapClicked($event)" (mapReady)="onMapReady($event)">
+                                        <agm-marker [latitude]="latitud" [longitude]="longitud"></agm-marker>
+                                    </agm-map>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">DOY CUENTA A UD. SIENDO LA HORA INDICADA, SE PROCEDIÓ A: </label>
+                                        <textarea oninput="this.value = this.value.toUpperCase()" [(ngModel)]="p_par_descri" name="text" id="exampleText" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="position-relative form-group">
+                                <label for="inputMensaje"><strong> Adjuntar Archivos </strong></label>
+                                <ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png,image/gif">
+                                    <ngx-dropzone-label>Arrastra tus archivos</ngx-dropzone-label>
+                                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true">
+                                        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                    </ngx-dropzone-image-preview>
+                                </ngx-dropzone>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <p class="text-left">
+                                        <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Grabar" (click)="procesaParte()"><i class="pe-7s-plus btn-icon-wrapper"></i>Grabar</button>
+                                        <!-- <button id="LimpiarForm" style="display:none" (click)="LimpiarFormulario()">a</button> -->
+                                        <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Cancelar" [routerLink]="['/parte']"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-right">
+                    <ul class="header-megamenu nav">
+                        <li class="nav-item">
+                            <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <ng-template #templateNew>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Registrar {{titulopant}}</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" onclick="Limpiartalcancelar()" id="closeModal">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+    </ng-template> -->
+
+</div>

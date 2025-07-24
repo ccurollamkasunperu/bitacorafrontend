@@ -1,0 +1,393 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="main-card mb-2 card" style="padding: 12px;">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="uor_id">Descripción del Bien: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.sbf_descri" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="uor_id">Area del Bien: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.ard_descri" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_rec_codpat">Código de SBN: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.rec_codigo" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_rec_numser">Código Interno: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.rec_coditm" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_esr_id">Estado del Recurso: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.esr_descri" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbg_id">Grupo: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.sbg_descri" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbc_id">Clase: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.sbc_descri" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbf_id">Familia: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.sbf_descri" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_mar_id">Marca: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.mar_descri" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="p_mod_id">Modelo: </label>
+                                    <input type="text" [(ngModel)]="dataInventarioUnico.mod_descri" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()" [disabled]="deshabilitadoedit">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 card">
+                        <div class="card-body">
+                            <ul class="tabs-animated-shadow tabs-animated nav text-bold">
+                                <li class="nav-item">
+                                    <a role="tab" class="nav-link active" id="tab-c-0" data-toggle="tab" href="#tab-animated-0">
+                                        <span>ORDENADOR</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a role="tab" class="nav-link" id="tab-c-1" data-toggle="tab" href="#tab-animated-1">
+                                        <span>ALMACENAMIENTO</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a role="tab" class="nav-link" id="tab-c-2" data-toggle="tab" href="#tab-animated-2">
+                                        <span>VIDEO</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a role="tab" class="nav-link" id="tab-c-3" data-toggle="tab" href="#tab-animated-3">
+                                        <span>RED</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active pt-3" id="tab-animated-0" role="tabpanel">
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="p_sob_id">Sistema Operativo: </label>
+                                                <ng-select class="mayus" [(ngModel)]="p_sob_id" (change)="loadSistemaOperativoVersion();">
+                                                    <ng-option value="0">Seleccionar</ng-option>
+                                                    <ng-option *ngFor="let itemSistemaOperativoBase of dataSistemaOperativoBase" [value]="itemSistemaOperativoBase.sob_id">{{itemSistemaOperativoBase.sob_descri}}</ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="p_sov_id">Versión: </label>
+                                                <ng-select class="mayus" [(ngModel)]="p_sov_id" (change)="loadSistemaOperativoEdicion();">
+                                                    <ng-option value="0">Seleccionar</ng-option>
+                                                    <ng-option *ngFor="let itemSistemaOperativoVersion of dataSistemaOperativoVersion" [value]="itemSistemaOperativoVersion.sov_id">{{itemSistemaOperativoVersion.sov_id}}</ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="p_soe_id">Edición: </label>
+                                                <ng-select class="mayus" [(ngModel)]="p_soe_id">
+                                                    <ng-option value="0">Seleccionar</ng-option>
+                                                    <ng-option *ngFor="let itemSistemaOperativoEdicion of dataSistemaOperativoEdicion" [value]="itemSistemaOperativoEdicion.soe_id">{{itemSistemaOperativoEdicion.soe_descri}}</ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="p_rpr_id">Hostname: </label>
+                                                <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="uor_id">Dominio: </label>
+                                                <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="uor_id">Usuario Active Directory: </label>
+                                                <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="p_mar_id">Marca Placa: </label>
+                                                <ng-select class="mayus" [(ngModel)]="p_mar_id">
+                                                    <ng-option value="0">Seleccionar</ng-option>
+                                                    <ng-option *ngFor="let itemdataMarca of dataMarcas" [value]="itemdataMarca.mar_id">{{itemdataMarca.mar_descri}}</ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="p_mod_id">Modelo: </label>
+                                                <ng-select class="mayus" [(ngModel)]="p_mod_id">
+                                                    <ng-option value="0">Seleccionar</ng-option>
+                                                    <ng-option *ngFor="let itemdataMarca of dataModelo" [value]="itemdataMarca.mod_id">{{itemdataMarca.mod_descri}}</ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="uor_id">Serie: </label>
+                                                <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="p_tpr_id">Procesador: </label>
+                                                <ng-select class="mayus" [(ngModel)]="p_tpr_id">
+                                                    <ng-option value="0">Seleccionar</ng-option>
+                                                    <ng-option *ngFor="let itemTipoProcesador of dataTipoProcesador" [value]="itemTipoProcesador.tpr_id">{{itemTipoProcesador.tpr_descri}}</ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="position-relative form-group">
+                                                <label for="p_mod_id">Generación: </label>
+                                                <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="position-relative form-group">
+                                                <label for="uor_id">Descripción: </label>
+                                                <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-2">
+                                            <div class="position-relative form-group">
+                                                <label for="p_mod_id">RAM: </label>
+                                                <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="p_ume_id">Unidad de Medida RAM: </label>
+                                                <ng-select class="mayus" [(ngModel)]="p_ume_id">
+                                                    <ng-option value="0">Seleccionar</ng-option>
+                                                    <ng-option *ngFor="let itemdataUnidadMedida of dataUnidadMedida" [value]="itemdataUnidadMedida.ume_id">{{itemdataUnidadMedida.umb_abrevi}}</ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="position-relative form-group">
+                                                <label for="p_mod_id">Velocidad: </label>
+                                                <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="telefono" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="position-relative form-group">
+                                                <label for="p_ram_id">Unidad de Medida (Velocidad): </label>
+                                                <ng-select class="mayus" [(ngModel)]="p_ram_id">
+                                                    <ng-option value="0">Seleccionar</ng-option>
+                                                    <ng-option *ngFor="let itemdataUnidadVelocidadMedida of dataUnidadVelocidadMedida" [value]="itemdataUnidadVelocidadMedida.ume_id">{{itemdataUnidadVelocidadMedida.umb_abrevi}}</ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row pt-2">
+                                        <div class="col-md-12">
+                                            <p class="text-right">
+                                                <button class="mb-2 mr-2 btn-icon btn btn-primary" id="Grabar" (click)="procesaRegistro()"><i class="pe-7s-plus btn-icon-wrapper"></i>GUARDAR DATOS DEL ORDENADOR</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane pt-3" id="tab-animated-1" role="tabpanel">
+                                    <div class="table-responsive" id="tablaDataProceso">
+                                        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                                            <thead>
+                                                <tr style="text-align: center;">
+                                                    <th>TIPO</th>
+                                                    <th>INTERFAZ</th>
+                                                    <th>FORMA</th>
+                                                    <th>TAMAÑO</th>
+                                                    <th>U.M.</th>
+                                                    <th>ESTADO</th>
+                                                    <th>INDICADOR</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of dataCamara" style="text-align: center;">
+                                                    <td>{{item.cam_id}}</td>
+                                                    <td>{{item.cam_dire01}}</td>
+                                                    <td>{{item.cam_dire02}}</td>
+                                                    <td>{{item.cam_descri}}</td>
+                                                    <td>{{item.cam_descri}}</td>
+                                                    <td>{{item.cam_descri}}</td>
+                                                    <td>{{item.cam_descri}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+                                        <div class="pt-3">
+                                            <button class="mb-2 btn-icon btn btn-success" (click)="openModalShow(OpenModalNuevaUnidadAlmacenamiento, 'modal-xl')"><i class="pe-7s-plus btn-icon-wrapper"></i>NUEVA UNIDAD DE ALMACENAMIENTO</button>
+                                        </div>
+                                        <div class="pt-3">
+                                            <button class="mb-2 btn-icon btn btn-primary" id="Grabar" (click)="procesaRegistro()"><i class="pe-7s-plus btn-icon-wrapper"></i>GUARDAR DATOS DEL ALMACENAMIENTO</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-animated-2" role="tabpanel">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="mb-0 table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>TIPO</th>
+                                                        <th>CONEXIÓN</th>
+                                                        <th>MEMORIA</th>
+                                                        <th>U.M.</th>
+                                                        <th>ESTADO</th>
+                                                        <th>INDICADOR</th>
+                                                        <th>ACCIONES</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-2 pb-3">
+                                            <div class="pt-3">
+                                                <button class="mb-2 btn-icon btn btn-success" (click)="openModalShow(OpenModalVideo, 'modal-xl')"><i class="pe-7s-plus btn-icon-wrapper"></i>NUEVA UNIDAD DE VIDEO</button>
+                                            </div>
+                                            <div class="pt-3">
+                                                <button class="mb-2 btn-icon btn btn-primary" (click)="procesaRegistro()"><i class="pe-7s-plus btn-icon-wrapper"></i>GUARDAR DATOS DEL ALMACENAMIENTO</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-animated-3" role="tabpanel">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="mb-0 table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ADAPTADOR</th>
+                                                        <th>CONEXIÓN</th>
+                                                        <th>NÚMERO DE IP</th>
+                                                        <th>NÚMERO DE MAC</th>
+                                                        <th>ESTADO</th>
+                                                        <th>INDICADOR</th>
+                                                        <th>ACCIONES</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                        <td>Table cell</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-2 pb-3">
+                                            <div class="pt-3">
+                                                <button class="mb-2 btn-icon btn btn-success" (click)="openModalShow(OpenModalRed, 'modal-xl')"><i class="pe-7s-plus btn-icon-wrapper"></i>NUEVA UNIDAD DE ALMACENAMIENTO</button>
+                                            </div>
+                                            <div class="pt-3">
+                                                <button class="mb-2 btn-icon btn btn-primary" (click)="procesaRegistro()"><i class="pe-7s-plus btn-icon-wrapper"></i>GUARDAR DATOS DEL ALMACENAMIENTO</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-right">
+                    <ul class="header-megamenu nav">
+                        <li class="nav-item">
+                            <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #OpenModalNuevaUnidadAlmacenamiento>
+        <app-modal-almacenamiento (seleccionarAlmacenamiento)="onAlmacenamientoSeleccionado($event)" (cancelClicked)="onCancelar()"></app-modal-almacenamiento>
+    </ng-template>
+    <ng-template #OpenModalVideo>
+        <app-modal-video (seleccionarVideo)="onVideoSeleccionado($event)" (cancelClicked)="onCancelar()"></app-modal-video>
+    </ng-template>
+    <ng-template #OpenModalRed>
+        <app-modal-red (seleccionarRed)="onRedSeleccionado($event)" (cancelClicked)="onCancelar()"></app-modal-red>
+    </ng-template>
+</div>

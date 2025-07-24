@@ -1,0 +1,129 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="main-card mb-2 card" style="padding: 12px;">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="p_teamid">Equipo: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_teamid" (change)="loadStaffsel()">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let item of dataTeam" [value]="item.team_id">{{item.name}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="p_stafid">Agente: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_stafid">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let item of dataStaff" [value]="item.staff_id">{{item.nomcom}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="position-relative form-group">
+                                    <label for="p_numtkt">N° Ticket: </label>
+                                    <input name="p_numtkt" id="p_numtkt" [(ngModel)]="p_numtkt" type="text" class="form-control" (keypress)="restrictNumeric($event)">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_topiid">Tema de Ayuda: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_topiid">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let item of dataTopic" [value]="item.topic_id">{{item.temayu}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="p_statid">Estado: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_statid">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let item of dataTicketEstados" [value]="item.id">{{item.nomest}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="p_fecini">Fecha Inicio: </label>
+                                    <input name="p_fecini" id="p_fecini" type="date" class="form-control" [disabled]="disabled_inputs" [(ngModel)]="p_fecini">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="position-relative form-group">
+                                    <label for="p_fecfin">Fecha Fin: </label>
+                                    <input name="p_fecfin" id="p_fecfin" type="date" class="form-control" [disabled]="disabled_inputs" [(ngModel)]="p_fecfin">
+                                </div>
+                            </div>
+                            <div class="col-md-3" style="text-align: right;">
+                                <div class="text-center d-inline-flex btns-filters">
+                                    <button class="mb-2 mr-2 btn-icon btn btn-primary btn-md" id="buscar" (click)="loadData()"><i class="pe-7s-search btn-icon-wrapper"></i>Buscar</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-warning btn-md" id="nuevaBitacora" [routerLink]="['/bitacora-ins']"><i class="pe-7s-plus btn-icon-wrapper"></i>Nuevo</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-success btn-md" id="descargaExcel" (click)="descargaExcel()"><i class="pe-7s-attention btn-icon-wrapper"></i>Exportar Excel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-card mb-3 card">
+                        <div class="card-body" id="tablaProceso">
+                            <h5 class="card-title">Resultados de Busqueda &nbsp; <span id="busquedaTables" style="display: none;"><i class="fa fa-spinner fa-pulse fa-fw"></i></span></h5>
+                            <div class="table-responsive" id="tablaDataProceso">
+                                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                                    <thead>
+                                        <tr style="text-align: center;">
+                                            <th>NRO TICKET (#)</th>
+                                            <th>FECHA</th>
+                                            <th>TEMA DE AYUDA </th>
+                                            <th>AGENTE</th>
+                                            <th>ESTADO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of dataTicket" style="text-align: center;">
+                                            <td>{{item.number}}</td>
+                                            <td>{{item.created}}</td>
+                                            <td>{{item.topic}}</td>
+                                            <td>{{item.nomage}}</td>
+                                            <td>{{item.nomsta}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-right">
+                    <ul class="header-megamenu nav">
+                        <li class="nav-item">
+                            <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

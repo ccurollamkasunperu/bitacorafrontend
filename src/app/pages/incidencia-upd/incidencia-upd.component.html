@@ -1,0 +1,184 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Tipo: </label>
+                                        <ng-select class="mayus" [(ngModel)]="p_tin_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataParteTipo" [value]="item.tin_id">{{item.tin_descri}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Sector: </label>
+                                        <ng-select class="mayus" [(ngModel)]="p_sec_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataSector" [value]="item.sec_id">{{item.sec_descri}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Motivo Parte Cab: </label>
+                                        <ng-select class="mayus" [(ngModel)]="p_mpc_id" (change)="loadDataParteMotivo()">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataParteCab" [value]="item.mpc_id">{{item.mpc_descri}}
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Motivo Parte Det: </label>
+                                        <ng-select class="mayus" [(ngModel)]="p_mop_id" [disabled]="secselpartmotiv">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataParteMotivo" [value]="item.mop_id">{{item.mpd_descri}}
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Vehiculo: </label>
+                                        <ng-select class="mayus" [(ngModel)]="p_veh_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let itemdataVehiculo of dataVehiculo" [value]="itemdataVehiculo.veh_id">{{itemdataVehiculo.veh_nombre}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Cámara: </label>
+                                        <ng-select class="mayus" [(ngModel)]="p_cam_id">
+                                            <ng-option value="">Seleccionar</ng-option>
+                                            <ng-option *ngFor="let item of dataCamara" [value]="item.cam_id">{{item.cam_ubicac}}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Teléfono: </label>
+                                        <input name="pt1_nombres" id="pt1_nombres" type="text" [(ngModel)]="p_inc_numtel" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="pt1_nombres">Descripción: </label>
+                                        <textarea oninput="this.value = this.value.toUpperCase()" [(ngModel)]="descrip" name="text" id="exampleText" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="fb_fecini">Dirección </label>
+                                        <input class="form-control" ngx-google-places-autocomplete [options]='options' placeholder="Ingrese Dirección" [(ngModel)]="p_inc_direcc" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
+                                    </div>
+                                </div>
+                                <!-- <div id="map"></div> -->
+                                <div class="col-md-12">
+                                    <agm-map [latitude]="latitud" [zoom]="17" [longitude]="longitud" (mapClick)="mapClicked($event)" (mapReady)="onMapReady($event)">
+                                        <agm-marker [latitude]="latitud" [longitude]="longitud"></agm-marker>
+                                    </agm-map>
+                                </div>
+                            </div>
+                            <table class="row-border hover">
+                                <thead>
+                                    <tr style="text-align: center;">
+                                        <th>IMAGEN ADJUNTAS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="text-align: center;">
+                                        <td *ngFor="let item of dataImagen">
+                                            <div class="widget-content p-0">
+                                                <div class="widget-content-wrapper" style="justify-content: center;">
+                                                    <div class="widget-content-center mr-3">
+                                                        <img width="200" height="200" [src]="'data:image/png;base64,' + item.iin_images" alt=""><br><br>
+                                                        <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb pe-7s-trash btn-icon-wrapper" title="Eliminar" (click)="eliminarImagen(item.iin_id)"></button>
+                                                    </div>
+                                                    <div class="widget-content-center">
+                                                        <div class="widget-heading"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="position-relative form-group">
+                                <label for="inputMensaje"><strong> Adjuntar Archivos </strong></label>
+                                <ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png,image/gif">
+                                    <ngx-dropzone-label>Arrastra tus archivos</ngx-dropzone-label>
+                                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                                        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                    </ngx-dropzone-image-preview>
+                                </ngx-dropzone>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <p class="text-left">
+                                        <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Grabar" (click)="editarRegistro()"><i class="pe-7s-plus btn-icon-wrapper"></i>Grabar</button>
+                                        <button class="mb-2 mr-2 btn-icon btn btn-info-mdsb" id="Cancelar" [routerLink]="['/incidencia']"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-wrapper-footer">
+            <div class="app-footer">
+                <div class="app-footer__inner">
+                    <div class="app-footer-right">
+                        <ul class="header-megamenu nav">
+                            <li class="nav-item">
+                                <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+        <ng-template #templateNew>
+            <div class="modal-header">
+                <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Registrar {{titulopant}}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" onclick="Limpiartalcancelar()" id="closeModal">
+              <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </ng-template> -->
+
+    </div>

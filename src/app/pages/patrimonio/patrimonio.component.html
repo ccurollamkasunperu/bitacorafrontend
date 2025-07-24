@@ -1,0 +1,170 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="{{icono}}" style="color:#2C3180;"></i>
+                    </div>
+                    <div>{{titulopant}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="main-card mb-2 card" style="padding: 12px;">
+                        <div class="form-row">
+                            <div class="col-md-2">
+                                <div class="position-relative form-group">
+                                    <label for="p_tdr_id">Tipo Documento: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_tdr_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let item of dataTipoDocumento" [value]="item.tdi_id">{{item.tdi_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="position-relative form-group">
+                                    <label for="nudore">N° Documento: </label>
+                                    <input name="nudore" id="nudore" [(ngModel)]="nudore" type="text" class="form-control" (keypress)="restrictNumeric($event)">
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="position-relative form-group">
+                                    <label for="result">Resultado: </label>
+                                    <input name="result" id="result" [(ngModel)]="result" type="text" class="form-control" (keypress)="restrictNumeric($event)" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-1 d-flex align-items-center justify-content-center">
+                                <div class="form-group">
+                                    <button class="mt-4 btn-icon btn btn-primary btn-lg btn-block"><i class="pe-7s-search"></i> BUSCAR</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="p_sed_id">Sede: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_sed_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataSede of dataSedes" [value]="itemdataSede.sed_id">{{itemdataSede.sed_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="position-relative form-group">
+                                    <label for="p_ard_id">Area: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_ard_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemAreadenominacion of dataAreadenominacion" [value]="itemAreadenominacion.ard_id">{{itemAreadenominacion.ard_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_grupo_id">Grupo: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_grupo_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataGrupo of dataGrupos" [value]="itemdataGrupo.sbg_id">{{itemdataGrupo.sbg_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_clase_id">Clase: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_clase_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataClase of dataClases" [value]="itemdataClase.sbc_id">{{itemdataClase.sbc_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_familia_id">Familia: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_familia_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataFamilia of dataFamilias" [value]="itemdataFamilia.sbf_id">{{itemdataFamilia.sbf_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="position-relative form-group">
+                                    <label for="p_sbe_id">Estado: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_sbe_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataEstado of dataEstados" [value]="itemdataEstado.sbe_id">{{itemdataEstado.sbe_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="position-relative form-group">
+                                    <label for="p_mar_id">Marca: </label>
+                                    <ng-select class="mayus" [(ngModel)]="p_mar_id">
+                                        <ng-option value="0">Seleccionar</ng-option>
+                                        <ng-option *ngFor="let itemdataMarca of dataMarcas" [value]="itemdataMarca.mar_id">{{itemdataMarca.mar_descri}}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-3" style="text-align: right;">
+                                <div class="text-center d-inline-flex btns-filters">
+                                    <button class="mb-2 mr-2 btn-icon btn btn-primary btn-md" id="buscar" (click)="loadDataProceso()"><i class="pe-7s-search btn-icon-wrapper"></i>Buscar</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-warning btn-md" id="nuevoMantenimiento" (click)="incidenciaIns()"><i class="pe-7s-plus btn-icon-wrapper"></i>Nuevo</button>
+                                    <button class="mb-2 mr-2 btn-icon btn btn-success btn-md" id="descargaExcel" (click)="descargaExcel()"><i class="pe-7s-attention btn-icon-wrapper"></i>Exportar Excel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-card mb-3 card">
+                        <div class="card-body" id="tablaProceso">
+                            <h5 class="card-title">Resultados de Busqueda &nbsp; <span id="busquedaTables" style="display: none;"><i class="fa fa-spinner fa-pulse fa-fw"></i></span></h5>
+                            <div class="table-responsive" id="tablaDataProceso">
+                                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                                    <thead>
+                                        <tr style="text-align: center;">
+                                            <th>CÓDIGO SBN</th>
+                                            <th>DESCRIPCIÓN</th>
+                                            <th>MARCA</th>
+                                            <th>ESTADO</th>
+                                            <th>SEDE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of dataCamara" style="text-align: center;">
+                                            <td>{{item.cam_id}}</td>
+                                            <td>{{item.cam_dire01}}</td>
+                                            <td>{{item.cam_dire02}}</td>
+                                            <td>{{item.cam_descri}}</td>
+                                            <td>{{item.cam_descri}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-right">
+                    <ul class="header-megamenu nav">
+                        <li class="nav-item">
+                            <p style="margin: 0px">Llamkasun Perú &copy; 2025</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left"> <i class="pe-7s-plus btn-icon-wrapper"> </i> Registrar {{titulopant}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancelar()" id="closeModal">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="p_esr_id">Conexión: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_mod_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataMarca of dataModelo" [value]="itemdataMarca.mod_id">{{itemdataMarca.mod_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="p_esr_id">Distribuición: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_mod_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataMarca of dataModelo" [value]="itemdataMarca.mod_id">{{itemdataMarca.mod_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="p_esr_id">Tipo: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_mod_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataMarca of dataModelo" [value]="itemdataMarca.mod_id">{{itemdataMarca.mod_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="p_mod_id">Estructura: </label>
+                                <ng-select class="mayus" [(ngModel)]="p_mod_id">
+                                    <ng-option value="0">Seleccionar</ng-option>
+                                    <ng-option *ngFor="let itemdataMarca of dataModelo" [value]="itemdataMarca.mod_id">{{itemdataMarca.mod_descri}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="position-relative form-group">
+                                <label for="p_rec_observ">Observaciones: </label>
+                                <textarea name="p_rec_observ" id="p_rec_observ" class="form-control" ng-pattern="/^[a-zA-Z]*$/" oninput="this.value = this.value.toUpperCase()"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <p class="text-right">
+                                <button class="mb-2 mr-2 btn-icon btn btn-primary" (click)="GuardarTeclado()"><i class="pe-7s-plus btn-icon-wrapper"></i>Guardar datos de Teclado</button>
+                                <button class="mb-2 mr-2 btn-icon btn btn-danger" (click)="onCancelar()"><i class="pe-7s-trash btn-icon-wrapper"></i>Cancelar</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
